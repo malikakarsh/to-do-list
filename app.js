@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const request = require('request')
-const PORT = 4500
+const PORT = process.env.PORT
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
