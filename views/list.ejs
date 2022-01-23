@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lets Do It</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="images/logo.png" type="image/icon type">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" />
+        <script type="text/javascript" src="http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="box" id="heading">
+                        <h1><%= date %></h1>
+                    </div>
+                    <div class="box">
+                        <% for (let i = 0; i < items.length; i++) { %>
+                            <div class="row">
+                                <!-- <div class="col-2">
+                                    <input type="checkbox">
+                                </div> -->
+                                <div class="col-2">
+                                    <form action="/strike" method="post">
+                                    
+                                        <% if (state[i] === 'no-strike') { %>
+                                            <button type="submit" class="btn btn-warning bp" name="name" value=<%= i %>>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                                                <path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"/>
+                                                <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
+                                            </svg>
+                                            </button>
+                                        <% } else { %>
+                                            <button type="submit" class="btn btn-success bp" name="name" value=<%= i %>>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                                                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                                            </svg>
+                                            </button>
+                                        <% } %>
+                                        </svg>
+                                    </form>
+                                </div>
+                                <div class="col-6">
+                                    <p class=<%= state[i] %>><%= items[i] %></p>
+                                </div>
+                                <div class="col-4">
+                                    <form action="/dlt" method="post">
+                                    <button type="submit" class="btn btn-danger bp" name="name" value=<%= i %>>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                        </svg>
+                                    </button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% } %>
+                        <form class="item" method="post" action="/">
+                            <input type="text" name="item" required placeholder="New Item" autocomplete="off">
+                            <button class="butt" type="submit">+</button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-sm-5">
+                    <section id="s-team" class="section">
+                        <div class="b-skills">
+                            <div class="container">
+                                <h2>Progress</h2>
+                                <div class="row">
+                                    <div class="skill-item center-block">
+                                        <div class="chart-container">
+                                            <div class="chart " data-percent=<%= percentage %> data-bar-color="#67ddac">
+                                                <span class="percent" data-after="%"><%= percentage %></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <script src="plugins/jquery-2.2.4.min.js"></script>
+                <script src="plugins/jquery.appear.min.js"></script>
+                <script src="plugins/jquery.easypiechart.min.js"></script> 
+                <script>
+
+                var $window = $(window);
+
+                function run()
+                {
+                    var fName = arguments[0],
+                        aArgs = Array.prototype.slice.call(arguments, 1);
+                    try {
+                        fName.apply(window, aArgs);
+                    } catch(err) {
+                        
+                    }
+                };
+                
+                function _chart ()
+                {
+                    $('.b-skills').appear(function() {
+                        setTimeout(function() {
+                            $('.chart').easyPieChart({
+                                easing: 'easeOutElastic',
+                                delay: 3000,
+                                barColor: '#369670',
+                                trackColor: '#fff',
+                                scaleColor: false,
+                                lineWidth: 21,
+                                trackWidth: 21,
+                                size: 250,
+                                lineCap: 'round',
+                                onStep: function(from, to, percent) {
+                                    this.el.children[0].innerHTML = Math.round(percent);
+                                }
+                            });
+                        }, 150);
+                    });
+                };
+                
+
+                $(document).ready(function() {
+                
+                    run(_chart);
+                
+                    
+                });
+
+
+                    
+                    </script>
+
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
