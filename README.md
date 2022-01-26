@@ -2,8 +2,6 @@
 
 A simple application to track daily progress of your scheduled tasks.
 
-App URL: https://todolist310.herokuapp.com/
-
 ## Setup And Run
 
 Default port is set to 4500
